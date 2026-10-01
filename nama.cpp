@@ -10,6 +10,6 @@ int main() {
     cout<<nama <<endl;
     cout<<"sekolahmu di ";
     cout<< sekolah <<endl;
-    system("pause")
+    system("pause");
     return 0;
 }
