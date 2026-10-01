@@ -23,7 +23,7 @@ jobs:
     # 3. Kompilasi file C++ menjadi .exe
     - name: Compile C++ Code
       run: |
-        cl.exe /EHsc main.cpp /Fe:program_saya.exe
+        cl.exe /EHsc nama.cpp /Fe:program_saya.exe
 
     # 4. Upload file .exe sebagai Artifact agar bisa diunduh
     - name: Upload Executable Artifact
