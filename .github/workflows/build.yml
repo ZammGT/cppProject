@@ -2,32 +2,30 @@ name: Build C++ Executable
 
 on:
   push:
-    branches: [ "main" ] # Berjalan otomatis saat push ke branch main
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch: # Memungkinkan menjalankan workflow secara manual
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    # 1. Checkout kode dari repositori
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # 2. Setup Developer Command Prompt untuk MSVC
     - name: Initialize MSVC Developer Command Prompt
       uses: ilammy/msvc-dev-cmd@v1
 
-    # 3. Kompilasi file C++ menjadi .exe
+    # Perhatikan nama file output setelah /Fe:
     - name: Compile C++ Code
       run: |
-        cl.exe /EHsc nama.cpp /Fe:program_saya.exe
+        cl.exe /EHsc nama.cpp /Fe:nama.exe
 
-    # 4. Upload file .exe sebagai Artifact agar bisa diunduh
+    # Gunakan nama file yang sama persis di bagian path
     - name: Upload Executable Artifact
       uses: actions/upload-artifact@v4
       with:
         name: cpp-program-windows
-        path: nama.exe
+        path: ${{ github.workspace }}/nama.exe
